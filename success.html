@@ -1,29 +1,4 @@
-
-<?php
-
-$firstname=$_POST["first-name"];
-$lastname=$_POST["last-name"];
-$email=$_POST["your_email"];
-$phone=$_POST["phone"];
-$tech=$_POST["tech"];
-
-ini_set( 'display_errors', 1 );
-    error_reporting( E_ALL );
-    $from = "Yayyy@poolup.4not5.com";
-    $to = "madhu.anandam@gmail.com";
-    $subject = "Thank you for Registering";
-    $message = "Hi Team \n".$firstname. " " .$lastname." with 
-Email: ".$email.",
-phone: ".$phone.",
-Techonology: ".$tech." 
-has registered with you for proxy";
-    $headers = "From:" . $from;
-	
-    if(mail($to,$subject,$message, $headers)) { 	
-
-		//echo "The email message was sent."; 	
-?>
-		<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
@@ -94,28 +69,4 @@ has registered with you for proxy";
 	<script src="js/jquery.steps.js"></script>
 	<script src="js/main.js"></script>
 </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
-</html> <?php
-    } else {
-    	echo "The email message was not sent.";
-    }
-	
-	
-	
-    
-	
-	//include("subscribe2.php");
-	/*$from = "welcome@poolup.4not5.com";
-    $to = "sowjanyachikka405@gmail.com";
-    $subject = "Thank you for Registering";
-    $message = "Thank you \n".$firstname. " " .$lastname." for trusting us, we will search a suitable proxy
-	for you!" 
-
-    $headers = "From:" . $from;
-	
-    if(mail($to,$subject,$message, $headers)) {
-		echo "The email message was sent.";
-    } else {
-    	echo "The email message was not sent.";
-    }*/
-	
-?>
+</html>
