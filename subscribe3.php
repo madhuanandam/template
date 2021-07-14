@@ -1,24 +1,32 @@
 <?php
-
-$servername = "mysql.hostinger.com";
+$servername = "localhost";
 $username = "u617208335_stunetdata";
 $password = "Stunet@1509";
 $dbname = "u617208335_registereddata";
-// Create connection
-$conn = mysqli_connect($servername, $username, $password, $database);
-// Check connection
-if (!$conn) {
-      die("Connection failed: " . mysqli_connect_error());
-}
- 
-echo "Connected successfully";
- 
-$sql = "INSERT INTO userdata (firstname, lastname, email) VALUES ('Test', 'Testing', 'Testing@tesing.com')";
-if (mysqli_query($conn, $sql)) {
-      echo "New record created successfully";
-} else {
-      echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-}
-mysqli_close($conn);
 
+$firstname=$_POST["first-name"];
+$lastname=$_POST["last-name"];
+$email=$_POST["your_email"];
+$phone=$_POST["phone"];
+$tech=$_POST["tech"];
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
+
+/*$sql = "INSERT INTO userdata (firstname, lastname, email)
+VALUES ('John', 'Doe', 'john@example.com')";*/
+$sql = "INSERT INTO userdata (firstname,lastname,email,phone,technology)
+VALUES ('".$firstname."','".$lastname."','".$email."','".$phone."','".$tech."')";
+
+if ($conn->query($sql) === TRUE) {
+  echo "New record created successfully";
+} else {
+  echo "Error: " . $sql . "<br>" . $conn->error;
+}
+
+$conn->close();
 ?>
